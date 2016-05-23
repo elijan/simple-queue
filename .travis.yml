@@ -13,10 +13,12 @@ matrix:
   fast_finish: true
   allow_failures:
     - php: hhvm
+    - php: 5.5
+    - php: 5.4
     - php: 5.3
 
 before_script:
-  - composer install
+  - composer install --ignore-platform-reqs --dev
 
 script:
   - phpunit

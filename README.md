@@ -164,3 +164,40 @@ while ($job = $queue->pull()) {
     $queue->failed($job);
 }
 ```
+
+AWS SQS
+--------
+
+Require PHP 5.5 and the library `aws/aws-sdk-php`.
+
+```php
+<?php
+
+use Aws\Sqs\SqsClient;
+use SimpleQueue\Adapter\AwsSqsQueueAdapter;
+use SimpleQueue\Job;
+use SimpleQueue\Queue;
+
+require __DIR__.'/vendor/autoload.php';
+
+$sqsClient = new SqsClient(array(
+    'version'     => 'latest',
+    'region' => 'us-east-1',
+    'credentials' => array(
+        'key' => 'my-aws-key',
+        'secret' => 'my-aws-secret'
+    )
+));
+
+$config = array(
+    'LongPollingTime' => 10 // Optional long polling of SQS HTTP request (default 0)
+);
+
+$queue = new Queue(new AwsSqsQueueAdapter('MyQueueName', $sqsClient, $config));
+$queue->push(new Job('foobar'));
+
+while ($job = $queue->pull()) {
+    echo $job->getBody(); // Do something with $job
+    $queue->completed($job);
+}
+```

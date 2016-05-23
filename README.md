@@ -1,6 +1,8 @@
 SimpleQueue
 ===========
 
+[![Build Status](https://travis-ci.org/fguillot/simple-queue.svg?branch=master)](https://travis-ci.org/fguillot/simple-queue)
+
 SimpleQueue is a queue abstraction library written in PHP.
 
 This library allows you to use the same interface for these drivers:
@@ -130,7 +132,6 @@ $queue = new Queue(new DisqueQueueAdapter(new Client([new Credentials('127.0.0.1
 $queue->push(new Job('foobar'));
 
 while ($job = $queue->pull()) {
-    var_dump($job);
     $queue->completed($job);
 }
 ```
@@ -160,8 +161,6 @@ $queue = new Queue(new AmqpQueueAdapter($channel, 'myQueue', 'myExchange'));
 $queue->push(new Job('failed'));
 
 while ($job = $queue->pull()) {
-    var_dump($job);
-    //$queue->completed($job);
     $queue->failed($job);
 }
 ```

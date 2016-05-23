@@ -1,0 +1,31 @@
+{
+    "name": "fguillot/simple-queue",
+    "description": "Abstraction layer for multiple queue systems",
+    "homepage": "https://github.com/fguillot/SimpleQueue",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frédéric Guillot"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.3.*",
+        "pda/pheanstalk": "~3.0",
+        "mariano/disque-php": "~2.0",
+        "php-amqplib/php-amqplib": "2.6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SimpleQueue\\": "src/"
+        }
+    },
+    "suggest": {
+        "pda/pheanstalk": "Required to use the Beanstalk queue driver (~3.0).",
+        "mariano/disque-php": "Required to use the Disque queue driver (~2.0).",
+        "php-amqplib/php-amqplib": "Required to use the RabbitMQ queue driver (2.6.*)."
+    }
+}

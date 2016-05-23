@@ -16,7 +16,8 @@
         "phpunit/phpunit": "5.3.*",
         "pda/pheanstalk": "~3.0",
         "mariano/disque-php": "~2.0",
-        "php-amqplib/php-amqplib": "2.6.*"
+        "php-amqplib/php-amqplib": "2.6.*",
+        "aws/aws-sdk-php": "~3.0"
     },
     "autoload": {
         "psr-4": {
@@ -26,6 +27,7 @@
     "suggest": {
         "pda/pheanstalk": "Required to use the Beanstalk queue driver (~3.0).",
         "mariano/disque-php": "Required to use the Disque queue driver (~2.0).",
-        "php-amqplib/php-amqplib": "Required to use the RabbitMQ queue driver (2.6.*)."
+        "php-amqplib/php-amqplib": "Required to use the RabbitMQ queue driver (2.6.*).",
+        "aws/aws-sdk-php": "Required to use the AWS SQS queue driver (~3.0)."
     }
 }

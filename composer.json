@@ -1,7 +1,7 @@
 {
     "name": "fguillot/simple-queue",
     "description": "Abstraction layer for multiple queue systems",
-    "homepage": "https://github.com/fguillot/SimpleQueue",
+    "homepage": "https://github.com/fguillot/simple-queue",
     "type": "library",
     "license": "MIT",
     "authors": [

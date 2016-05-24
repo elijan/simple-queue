@@ -11,6 +11,7 @@ This library allows you to use the same interface for these drivers:
 - Beanstalk
 - Disque
 - RabbitMQ
+- AWS SQS
 
 Requirements
 ------------
@@ -166,7 +167,7 @@ while ($job = $queue->pull()) {
 ```
 
 AWS SQS
---------
+-------
 
 Require PHP 5.5 and the library `aws/aws-sdk-php`.
 

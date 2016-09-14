@@ -46,8 +46,9 @@ class DisqueQueueAdapter implements QueueAdapterInterface
      */
     public function push(Job $job)
     {
-        $this->disque->queue($this->queueName)->push(new DisqueJob($job->getBody()));
-        return $this;
+        $disqueJob = new DisqueJob($job->getBody());
+        $this->disque->queue($this->queueName)->push($disqueJob);
+        $job->setId($disqueJob->getId());
     }
 
     /**

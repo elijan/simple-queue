@@ -21,6 +21,10 @@ class AwsSqsQueueAdapterTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        if (version_compare(PHP_VERSION, '5.5', '<')) {
+            $this->markTestSkipped('Test skipped: PHP '.PHP_VERSION);
+        }
+
         $this->sqsClient = $this
             ->getMockBuilder('Aws\Sqs\SqsClient')
             ->disableOriginalConstructor()

@@ -29,16 +29,18 @@ class AwsSqsQueueAdapterTest extends PHPUnit_Framework_TestCase
             )
             ->getMock();
 
-        $mockWithGet = $this->getMockBuilder('MockWithGet')
+        $mockWithGet = $this->getMockBuilder('Stdclass')
             ->setMethods(array('get'))
             ->getMock();
 
-        $mockWithGet->method('get')
-            ->willReturn('MyQueueUrl');
+        $mockWithGet
+            ->expects($this->once())
+            ->method('get')
+            ->will($this->returnValue('MyQueueUrl'));
 
         $this->sqsClient
             ->method('getQueueUrl')
-            ->willReturn($mockWithGet);
+            ->will($this->returnValue($mockWithGet));
 
         $this->queue = new Queue(new AwsSqsQueueAdapter('MyQueue', $this->sqsClient));
     }

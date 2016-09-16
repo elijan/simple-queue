@@ -36,7 +36,7 @@ class MemoryQueueAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testSchedule()
     {
-        $this->expectException('SimpleQueue\Exception\NotSupportedException');
+        $this->setExpectedException('SimpleQueue\Exception\NotSupportedException');
         $this->queue->schedule(new Job(), new DateTime('+1 day'));
     }
 

@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Aws\Sqs\SqsClient;
+use SimpleQueue\Adapter\AwsSqsQueueAdapter;
 use SimpleQueue\Job;
 use SimpleQueue\Queue;
 
@@ -39,7 +40,7 @@ class AwsSqsQueueAdapterTest extends PHPUnit_Framework_TestCase
             ->method('getQueueUrl')
             ->willReturn($mockWithGet);
 
-        $this->queue = new Queue(new \SimpleQueue\Adapter\AwsSqsQueueAdapter('MyQueue', $this->sqsClient));
+        $this->queue = new Queue(new AwsSqsQueueAdapter('MyQueue', $this->sqsClient));
     }
 
     public function testPush()

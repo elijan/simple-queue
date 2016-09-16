@@ -13,7 +13,7 @@
         "php": ">=5.3.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "5.3.*",
+        "phpunit/phpunit": "4.8.26",
         "pda/pheanstalk": "~3.0",
         "mariano/disque-php": "~2.0",
         "php-amqplib/php-amqplib": "2.6.*",

@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Pheanstalk\Pheanstalk;
+use SimpleQueue\Adapter\BeanstalkQueueAdapter;
 use SimpleQueue\Job;
 use SimpleQueue\Queue;
 
@@ -26,7 +27,7 @@ class BeanstalkQueueAdapterTest extends PHPUnit_Framework_TestCase
             ->setMethods(array('putInTube', 'reserveFromTube', 'delete', 'bury'))
             ->getMock();
 
-        $this->queue = new Queue(new \SimpleQueue\Adapter\BeanstalkQueueAdapter($this->beanstalk, 'MyQueue'));
+        $this->queue = new Queue(new BeanstalkQueueAdapter($this->beanstalk, 'MyQueue'));
     }
 
     public function testPush()

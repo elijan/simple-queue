@@ -21,4 +21,4 @@ before_script:
   - composer install --ignore-platform-reqs --dev
 
 script:
-  - phpunit
+  - ./vendor/bin/phpunit -c phpunit.xml

@@ -47,7 +47,8 @@ class BeanstalkQueueAdapter implements QueueAdapterInterface
      */
     public function push(Job $job)
     {
-        $this->beanstalk->putInTube($this->queueName, $job->serialize());
+        $jobId = $this->beanstalk->putInTube($this->queueName, $job->serialize());
+        $job->setId($jobId);
         return $this;
     }
 

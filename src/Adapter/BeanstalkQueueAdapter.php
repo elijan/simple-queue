@@ -76,9 +76,10 @@ class BeanstalkQueueAdapter implements QueueAdapterInterface
      * @access public
      * @return Job|null
      */
-    public function pull()
+    public function pull($timeout=null)
     {
-        $beanstalkJob = $this->beanstalk->reserveFromTube($this->queueName);
+    
+        $beanstalkJob = $this->beanstalk->reserveFromTube($this->queueName, $timeout);
 
         if ($beanstalkJob === false) {
             return null;
